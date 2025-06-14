@@ -1,3 +1,14 @@
+# Add this import at the very top
+import sys
+from werkzeug.utils import url_quote  # Import from correct location
+
+# Monkey-patch for Flask compatibility
+sys.modules['werkzeug.urls'] = sys.modules['werkzeug.utils']
+sys.modules['werkzeug.urls'].url_quote = url_quote
+
+# Rest of your code remains the same
+from flask import Flask
+# ... [your existing code] ...
 import os
 import json
 import threading
