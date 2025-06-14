@@ -11,7 +11,14 @@ from flask import Flask
 # ... [your existing code] ...
 import os
 import json
+import sys
 import threading
+from werkzeug.utils import url_quote  # Correct import location
+
+# Monkey-patch for Flask compatibility
+sys.modules['werkzeug.urls'] = sys.modules['werkzeug.utils']
+sys.modules['werkzeug.urls'].url_quote = url_quote
+
 from flask import Flask
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import (
