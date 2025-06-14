@@ -3,7 +3,14 @@ import json
 import threading
 from flask import Flask
 from telegram import Update, ReplyKeyboardMarkup
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes, ConversationHandler
+from telegram.ext import (
+    ApplicationBuilder,
+    CommandHandler,
+    MessageHandler,
+    filters,
+    ContextTypes,
+    ConversationHandler
+)
 from messages import messages
 from scoring import evaluate_score
 
@@ -21,7 +28,7 @@ with open("questions.json", "r", encoding="utf-8") as f:
 user_data = {}
 ASKING = 1
 
-# ===== YOUR ORIGINAL BOT FUNCTIONS =====
+# ===== BOT HANDLERS =====
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_data[update.effective_chat.id] = {
         "current": 0,
@@ -29,7 +36,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "lang": "en"
     }
     
-    # Detect Farsi
     if "fa" in update.effective_user.language_code:
         user_data[update.effective_chat.id]["lang"] = "fa"
         await update.message.reply_text(messages["start_fa"])
@@ -68,27 +74,24 @@ async def handle_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
         msg = messages[f"result_{lang}"].format(level=level, ielts=ielts)
         await update.message.reply_text(msg)
         return ConversationHandler.END
-# ===== END OF YOUR FUNCTIONS =====
 
-# Build Telegram application
-telegram_app = ApplicationBuilder().token(os.environ["BOT_TOKEN"]).build()
-
-# Conversation handler
-conv_handler = ConversationHandler(
-    entry_points=[CommandHandler("start", start)],
-    states={ASKING: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_answer)]},
-    fallbacks=[]
-)
-telegram_app.add_handler(conv_handler)
-
+# ===== APPLICATION SETUP =====
 def run_telegram_bot():
-    telegram_app.run_polling()
+    application = ApplicationBuilder().token(os.environ["BOT_TOKEN"]).build()
+    
+    conv_handler = ConversationHandler(
+        entry_points=[CommandHandler("start", start)],
+        states={ASKING: [MessageHandler(filters.TEXT & ~filters.COMMAND, handle_answer)]},
+        fallbacks=[]
+    )
+    application.add_handler(conv_handler)
+    application.run_polling()
 
 if __name__ == "__main__":
-    # Start Telegram bot in background thread
+    # Start Telegram bot in background
     bot_thread = threading.Thread(target=run_telegram_bot)
     bot_thread.daemon = True
     bot_thread.start()
     
-    # Start Flask server on Render's required port
-    app.run(host='0.0.0.0', port=10000)  # Critical for Render compatibility
+    # Start Flask server (must use port 10000 for Render)
+    app.run(host='0.0.0.0', port=10000, debug=False, use_reloader=False)
