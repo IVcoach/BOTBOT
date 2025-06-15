@@ -1,9 +1,14 @@
 services:
   - type: web
-    name: ielts-bot
-    env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "python bot.py"
+    name: ieltstori-bot
+    runtime: python
+    runtimeVersion: 3.11.9
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
     envVars:
-      - key: 8023160531:AAEHGg8_CAd0ceIceT6isGNH1Am8J2wJYNs
-        value: your_telegram_token
+      - key: BOT_TOKEN
+        sync: false  # Set this value in the Render dashboard
+      - key: PORT
+        value: 10000
+      - key: PYTHON_VERSION
+        value: 3.11.9
