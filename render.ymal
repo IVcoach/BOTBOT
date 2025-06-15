@@ -7,7 +7,7 @@ services:
     startCommand: python bot.py
     envVars:
       - key: BOT_TOKEN
-        sync: false  # Set this value in the Render dashboard
+        sync: false
       - key: PORT
         value: 10000
       - key: PYTHON_VERSION
