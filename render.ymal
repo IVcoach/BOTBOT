@@ -1,14 +1,7 @@
 services:
   - type: web
     name: ieltstori-bot
-    runtime: python
-    runtimeVersion: 3.11.9
-    buildCommand: pip install -r requirements.txt
-    startCommand: python bot.py
-    envVars:
-      - key: BOT_TOKEN
-        sync: false
-      - key: PORT
-        value: 10000
-      - key: PYTHON_VERSION
-        value: 3.11.9
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python bot.py"
+    autoDeploy: true
