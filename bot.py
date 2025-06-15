@@ -1,6 +1,13 @@
 import os
 import json
 import threading
+
+# ===== IMPORTANT: COMPATIBILITY PATCH =====
+import markupsafe
+if not hasattr(markupsafe, 'soft_unicode'):
+    markupsafe.soft_unicode = markupsafe.soft_str
+# ===== END PATCH =====
+
 from flask import Flask
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import (
@@ -93,5 +100,5 @@ if __name__ == "__main__":
     bot_thread.daemon = True
     bot_thread.start()
     
-    # Start Flask server (must use port 10000 for Render)
+    # Start Flask server
     app.run(host='0.0.0.0', port=10000, debug=False, use_reloader=False)
