@@ -1,3 +1,4 @@
+
 [
   {
     "level": "A1",
@@ -6,10 +7,58 @@
     "answer": "My name is John"
   },
   {
+    "level": "A1",
+    "question": "She _____ a teacher.",
+    "options": ["am", "is", "are", "be"],
+    "answer": "is"
+  },
+  {
+    "level": "A1",
+    "question": "I _____ coffee every morning.",
+    "options": ["drink", "drinks", "drinking", "drank"],
+    "answer": "drink"
+  },
+  {
+    "level": "A1",
+    "question": "_____ you like pizza?",
+    "options": ["Do", "Does", "Are", "Is"],
+    "answer": "Do"
+  },
+  {
+    "level": "A1",
+    "question": "The cat is _____ the table.",
+    "options": ["in", "on", "at", "by"],
+    "answer": "on"
+  },
+  {
     "level": "A2",
     "question": "I have been living here _____ five years.",
     "options": ["since", "from", "for", "by"],
     "answer": "for"
+  },
+  {
+    "level": "A2",
+    "question": "She is _____ than her sister.",
+    "options": ["tall", "taller", "tallest", "more tall"],
+    "answer": "taller"
+  },
+  {
+    "level": "A2",
+    "question": "I _____ to the store yesterday.",
+    "options": ["go", "goes", "went", "going"],
+    "answer": "went"
+  },
+  {
+    "level": "A2",
+    "question": "There _____ many people at the party.",
+    "options": ["was", "were", "is", "are"],
+    "answer": "were"
+  },
+  {
+    "level": "A2",
+    "question": "I _____ my homework when you called.",
+    "options": ["do", "did", "was doing", "have done"],
+    "answer": "was doing"
   },
   {
     "level": "B1",
@@ -18,9 +67,57 @@
     "answer": "had"
   },
   {
+    "level": "B1",
+    "question": "She has been studying English _____ 2020.",
+    "options": ["since", "for", "from", "until"],
+    "answer": "since"
+  },
+  {
+    "level": "B1",
+    "question": "The project _____ by next Friday.",
+    "options": ["will finish", "will be finished", "finishes", "is finishing"],
+    "answer": "will be finished"
+  },
+  {
+    "level": "B1",
+    "question": "I wish I _____ speak French fluently.",
+    "options": ["can", "could", "will", "would"],
+    "answer": "could"
+  },
+  {
+    "level": "B1",
+    "question": "The meeting has been _____ until next week.",
+    "options": ["put off", "put on", "put up", "put down"],
+    "answer": "put off"
+  },
+  {
     "level": "B2",
-    "question": "Despite _____ hard, he didn’t pass the exam.",
+    "question": "Despite _____ hard, he didn't pass the exam.",
     "options": ["study", "to study", "studied", "studying"],
     "answer": "studying"
+  },
+  {
+    "level": "B2",
+    "question": "I'd rather you _____ smoke in here.",
+    "options": ["don't", "didn't", "won't", "wouldn't"],
+    "answer": "didn't"
+  },
+  {
+    "level": "B2",
+    "question": "By the time you arrive, I _____ cooking.",
+    "options": ["will finish", "will have finished", "finish", "have finished"],
+    "answer": "will have finished"
+  },
+  {
+    "level": "B2",
+    "question": "Not only _____ late, but he also forgot his presentation.",
+    "options": ["he was", "was he", "he is", "is he"],
+    "answer": "was he"
+  },
+  {
+    "level": "B2",
+    "question": "The company is _____ of expanding into new markets.",
+    "options": ["capable", "able", "possible", "probable"],
+    "answer": "capable"
   }
 ]
